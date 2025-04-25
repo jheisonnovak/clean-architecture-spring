@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.ListTaskDto;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.UpdateTaskDto;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.CreateTaskUseCase;
+import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.DeleteTaskUseCase;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindAllTasks;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindTaskById;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.UpdateTaskUseCase;
@@ -32,12 +34,20 @@ public class TaskController {
     private final UpdateTaskUseCase updateTaskUseCase;
     private final FindAllTasks findAllTasksUseCase;
     private final FindTaskById findTaskByIdUseCase;
+    private final DeleteTaskUseCase deleteTaskUseCase;
     
-    public TaskController(CreateTaskUseCase createTaskUseCase, UpdateTaskUseCase updateTaskUseCase, FindAllTasks findAllTasksUseCase, FindTaskById findTaskByIdUseCase) {
+    public TaskController(
+        CreateTaskUseCase createTaskUseCase, 
+        UpdateTaskUseCase updateTaskUseCase, 
+        FindAllTasks findAllTasksUseCase, 
+        FindTaskById findTaskByIdUseCase, 
+        DeleteTaskUseCase deleteTaskUseCase
+    ) {
         this.createTaskUseCase = createTaskUseCase;
         this.updateTaskUseCase = updateTaskUseCase;
         this.findAllTasksUseCase = findAllTasksUseCase;
         this.findTaskByIdUseCase = findTaskByIdUseCase;
+        this.deleteTaskUseCase = deleteTaskUseCase;
     }
 
     @PostMapping("create")
@@ -62,6 +72,12 @@ public class TaskController {
     public ResponseEntity<ListTaskDto> getTaskById(@PathVariable Long taskId) {
         ListTaskDto task = findTaskByIdUseCase.execute(taskId);
         return ResponseEntity.ok(task);
+    }
+
+    @DeleteMapping("delete/{taskId}")
+    public ResponseEntity<ResponseDto> deleteTask(@PathVariable Long taskId) {
+        deleteTaskUseCase.execute(taskId);
+        return ResponseEntity.ok(new ResponseDto("Task successfully deleted"));
     }
 
     
