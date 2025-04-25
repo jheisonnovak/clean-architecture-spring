@@ -1,1 +1,24 @@
 # Clean architecture spring
+
+    src/
+    └── main/
+        └── java/
+            └── com/
+                └── suaempresa/
+                    └── seuprojeto/
+                        ├── shared/
+                        └── task/
+                            ├── domain/
+                            │   ├── entity/
+                            │   ├── enums/
+                            │   ├── repository/   
+                            │   └── service/      
+                            ├── infrastructure/
+                            │   ├── repository/  
+                            │   └── config/
+                            ├── application/
+                            │   ├── dto/
+                            │   ├── mapper/
+                            │   └── usecases/     
+                            └── interface/
+                                └── controller/
