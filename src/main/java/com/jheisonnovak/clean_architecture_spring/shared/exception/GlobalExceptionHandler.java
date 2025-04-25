@@ -47,4 +47,20 @@ public class GlobalExceptionHandler {
             HttpStatus.INTERNAL_SERVER_ERROR
         );
     }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiError> handleIllegalState(IllegalStateException ex) {
+        return new ResponseEntity<>(
+            new ApiError(HttpStatus.UNPROCESSABLE_ENTITY.value(), "Unprocessable Entity", ex.getMessage()),
+            HttpStatus.UNPROCESSABLE_ENTITY
+        );
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiError> handleResponseStatus(NotFoundException ex) {
+        return new ResponseEntity<>(
+            new ApiError(HttpStatus.NOT_FOUND.value(), "Not Found", ex.getMessage()),
+            HttpStatus.NOT_FOUND
+        );
+    }
 }
