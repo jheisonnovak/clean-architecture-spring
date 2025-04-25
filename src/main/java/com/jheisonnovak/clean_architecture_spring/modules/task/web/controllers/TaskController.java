@@ -18,8 +18,8 @@ import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.UpdateTaskDto;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.CreateTaskUseCase;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.DeleteTaskUseCase;
-import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindAllTasks;
-import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindTaskById;
+import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindAllTasksUseCase;
+import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindTaskByIdUseCase;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.UpdateTaskUseCase;
 import com.jheisonnovak.clean_architecture_spring.shared.dtos.ResponseDto;
 
@@ -32,15 +32,15 @@ public class TaskController {
 
     private final CreateTaskUseCase createTaskUseCase;
     private final UpdateTaskUseCase updateTaskUseCase;
-    private final FindAllTasks findAllTasksUseCase;
-    private final FindTaskById findTaskByIdUseCase;
+    private final FindAllTasksUseCase findAllTasksUseCase;
+    private final FindTaskByIdUseCase findTaskByIdUseCase;
     private final DeleteTaskUseCase deleteTaskUseCase;
     
     public TaskController(
         CreateTaskUseCase createTaskUseCase, 
         UpdateTaskUseCase updateTaskUseCase, 
-        FindAllTasks findAllTasksUseCase, 
-        FindTaskById findTaskByIdUseCase, 
+        FindAllTasksUseCase findAllTasksUseCase, 
+        FindTaskByIdUseCase findTaskByIdUseCase, 
         DeleteTaskUseCase deleteTaskUseCase
     ) {
         this.createTaskUseCase = createTaskUseCase;

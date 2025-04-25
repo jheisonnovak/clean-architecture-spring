@@ -6,7 +6,7 @@ public class UpdateTaskDto {
     
     private TaskStatus status;
 
-    UpdateTaskDto(TaskStatus status) {
+    public UpdateTaskDto(TaskStatus status) {
         this.status = status;
     }
 
