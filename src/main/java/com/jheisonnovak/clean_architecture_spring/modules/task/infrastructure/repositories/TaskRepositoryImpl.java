@@ -3,17 +3,18 @@ package com.jheisonnovak.clean_architecture_spring.modules.task.infrastructure.r
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import com.jheisonnovak.clean_architecture_spring.modules.task.domain.entities.Task;
 import com.jheisonnovak.clean_architecture_spring.modules.task.domain.repositories.TaskRepository;
 
 @Repository
-public class TaskRepositoryJPA implements TaskRepository{
+public class TaskRepositoryImpl implements TaskRepository{
 
     private final SpringDataTaskRepository jpaRepository;
 
-    public TaskRepositoryJPA(SpringDataTaskRepository jpaRepository) {
+    public TaskRepositoryImpl(SpringDataTaskRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
     }
 
@@ -29,7 +30,7 @@ public class TaskRepositoryJPA implements TaskRepository{
 
     @Override
     public List<Task> findAll() {
-        return jpaRepository.findAll();
+        return jpaRepository.findAll(Sort.by(Sort.Direction.ASC, "createdAt"));
     }
 
     @Override
