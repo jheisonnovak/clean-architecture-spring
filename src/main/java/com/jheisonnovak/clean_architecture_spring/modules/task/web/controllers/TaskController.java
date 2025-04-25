@@ -17,10 +17,12 @@ import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.dtos.UpdateTaskDto;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.CreateTaskUseCase;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindAllTasks;
+import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.FindTaskById;
 import com.jheisonnovak.clean_architecture_spring.modules.task.application.usecases.UpdateTaskUseCase;
 import com.jheisonnovak.clean_architecture_spring.shared.dtos.ResponseDto;
 
 import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("task")
@@ -29,11 +31,13 @@ public class TaskController {
     private final CreateTaskUseCase createTaskUseCase;
     private final UpdateTaskUseCase updateTaskUseCase;
     private final FindAllTasks findAllTasksUseCase;
+    private final FindTaskById findTaskByIdUseCase;
     
-    public TaskController(CreateTaskUseCase createTaskUseCase, UpdateTaskUseCase updateTaskUseCase, FindAllTasks findAllTasksUseCase) {
+    public TaskController(CreateTaskUseCase createTaskUseCase, UpdateTaskUseCase updateTaskUseCase, FindAllTasks findAllTasksUseCase, FindTaskById findTaskByIdUseCase) {
         this.createTaskUseCase = createTaskUseCase;
         this.updateTaskUseCase = updateTaskUseCase;
         this.findAllTasksUseCase = findAllTasksUseCase;
+        this.findTaskByIdUseCase = findTaskByIdUseCase;
     }
 
     @PostMapping("create")
@@ -54,5 +58,11 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
     
+    @GetMapping("find-by-id/{taskId}")
+    public ResponseEntity<ListTaskDto> getTaskById(@PathVariable Long taskId) {
+        ListTaskDto task = findTaskByIdUseCase.execute(taskId);
+        return ResponseEntity.ok(task);
+    }
+
     
 }
