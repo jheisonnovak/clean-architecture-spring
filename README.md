@@ -29,7 +29,7 @@ The project is structured following a modular approach with a layered architectu
     │   │   │   │   ├── infrastructure/
     │   │   │   │   │   ├── repositories/
     │   │   │   │   │   └── config/
-    │   │   │   │   ├── interface/
+    │   │   │   │   ├── web/
     │   │   │   │   │   └── controllers/
     │   │   ├── shared/
     │   │   │   ├── ...
