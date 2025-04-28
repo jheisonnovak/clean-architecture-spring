@@ -65,19 +65,35 @@ The project is structured following a modular approach with a layered architectu
 
 2. Build the project:
 
+    On **Linux/macOS**:
+
     ```bash
     ./mvnw clean install
     ```
 
+    On **Windows**:
+
+    ```cmd
+    mvnw.cmd clean install
+    ```
+
 3. Run the application:
+
+    On **Linux/macOS**:
 
     ```bash
     ./mvnw spring-boot:run
     ```
 
+    On **Windows**:
+
+    ```cmd
+    mvnw.cmd spring-boot:run
+    ```
+
 4. Access the application:
 
-    You can test the example application by accessing the API at: http://localhost:8080
+    Open your browser and navigate to [http://localhost:4000/swagger-ui.html](http://localhost:4000/swagger-ui.html) to explore the API documentation using Swagger UI.
 
 ## 📚 Learn More
 
