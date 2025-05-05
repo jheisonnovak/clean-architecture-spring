@@ -45,7 +45,7 @@ The project is structured following a modular approach with a layered architectu
 -   **Domain**: Contains core business logic, including **entities**, **enums**, **repositories**, and **services**.
 -   **Infrastructure**: Handles database operations and configurations, encapsulating persistence logic.
 -   **Application**: Contains **DTOs**, **mappers**, and **use cases** that represent the application's business logic.
--   **Interface**: Exposes the application to the outside world through **controllers**.
+-   **Web**: Exposes the application to the outside world through **controllers**.
 
 ## 🚀 Getting Started
 
@@ -59,7 +59,7 @@ The project is structured following a modular approach with a layered architectu
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/JheisonNovak/clean-architecture-spring.git
+    git clone https://github.com/jheisonnovak/clean-architecture-spring.git
     cd clean-architecture-spring
     ```
 
