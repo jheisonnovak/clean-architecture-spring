@@ -62,13 +62,13 @@ public class TaskController {
         return ResponseEntity.ok(new ResponseDto("Task successfully updated"));
     }
 
-    @GetMapping("find-all")
+    @GetMapping("find")
     public ResponseEntity<List<ListTaskDto>> getAllTasks() {
         List<ListTaskDto> tasks = findAllTasksUseCase.execute();
         return ResponseEntity.ok(tasks);
     }
     
-    @GetMapping("find-by-id/{taskId}")
+    @GetMapping("find/{taskId}")
     public ResponseEntity<ListTaskDto> getTaskById(@PathVariable Long taskId) {
         ListTaskDto task = findTaskByIdUseCase.execute(taskId);
         return ResponseEntity.ok(task);
