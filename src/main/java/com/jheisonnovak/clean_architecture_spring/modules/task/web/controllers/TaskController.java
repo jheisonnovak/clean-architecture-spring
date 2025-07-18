@@ -50,31 +50,31 @@ public class TaskController {
         this.deleteTaskUseCase = deleteTaskUseCase;
     }
 
-    @PostMapping("create")
+    @PostMapping()
     public ResponseEntity<ResponseDto> createTask(@Valid @RequestBody CreateTaskDto dto) {
         createTaskUseCase.execute(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("Task successfully created"));
     }
 
-    @PatchMapping("update/{taskId}")
+    @PatchMapping("{taskId}")
     public ResponseEntity<ResponseDto> updateTask(@PathVariable Long taskId, @Valid @RequestBody UpdateTaskDto dto) {
         updateTaskUseCase.execute(taskId, dto);
         return ResponseEntity.ok(new ResponseDto("Task successfully updated"));
     }
 
-    @GetMapping("find")
+    @GetMapping()
     public ResponseEntity<List<ListTaskDto>> getAllTasks() {
         List<ListTaskDto> tasks = findAllTasksUseCase.execute();
         return ResponseEntity.ok(tasks);
     }
     
-    @GetMapping("find/{taskId}")
+    @GetMapping("{taskId}")
     public ResponseEntity<ListTaskDto> getTaskById(@PathVariable Long taskId) {
         ListTaskDto task = findTaskByIdUseCase.execute(taskId);
         return ResponseEntity.ok(task);
     }
 
-    @DeleteMapping("delete/{taskId}")
+    @DeleteMapping("{taskId}")
     public ResponseEntity<ResponseDto> deleteTask(@PathVariable Long taskId) {
         deleteTaskUseCase.execute(taskId);
         return ResponseEntity.ok(new ResponseDto("Task successfully deleted"));
